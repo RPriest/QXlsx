@@ -9,7 +9,7 @@
 
 namespace QXlsx {
 
-int parse_col_letters(const QStringView& s, int* letters_len)
+int parse_col_letters(const QString& s, int* letters_len)
 {
     // A -> 1, Z -> 26, AA -> 27 ...
     int col = 0;
@@ -30,7 +30,7 @@ bool parse_cell_ref(const QString& r, int* out_row, int* out_col)
 {
     // Example: "C12"
     int letters_len = 0;
-    int col = parse_col_letters(QStringView(r), &letters_len);
+    int col = parse_col_letters(r, &letters_len);
     if (col <= 0 || letters_len <= 0)
         return false;
     bool ok = false;
